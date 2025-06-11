@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+/* Đặt biến chung để tái sử dụng */
+:root {
+  --font-heading: "Sen", sans-serif;
+  --primary-color: #ffb900;
+}
+
 html {
   /* 1rem = 10 px */
   font-size: 62.5%;
@@ -13,7 +19,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* Common - nhóm dùng chung, thuộc tính áp dụng cho cả trang web */
+/*======= Common - nhóm dùng chung, thuộc tính áp dụng cho cả trang web =======*/
 a {
   text-decoration: none;
 }
@@ -30,8 +36,14 @@ a {
   text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
-  border-radius: 24.5px;
+  /* Từ 24.5 sửa lại thành 999px để bán kính bo lớn hẳn lên */
+  border-radius: 999px;
   background: #171100;
+}
+
+/* Hiệu ứng khi di chuột vào nút */
+.btn:hover {
+  opacity: 0.9;
 }
 
 .main-content {
@@ -50,6 +62,7 @@ a {
 
 /* Do chúng là 2 class kề nhau -> tạo thanh cuộn Sticky cho web */
 .header.fixed {
+  z-index: 1;
   position: sticky;
   /* Lấy 36px - 8px */
   top: -28px;
@@ -114,6 +127,185 @@ a {
 }
 
 .header .action {
-    /* Do padding của Reviews đã là 21 thì chỉ cần cách left thêm 49 nữa thì là cách 70 như trên dự án Figma */
+  /* Do padding của Reviews đã là 21 thì chỉ cần cách left thêm 49 nữa thì là cách 70 như trên dự án Figma */
   margin-left: 49px;
+}
+
+/* ======================hero====================== */
+.hero {
+  /* 64-58px do header đã có padding là 8px nên phải trừ thêm */
+
+  /* Trên - trái phải - dưới đối với 3 đối số */
+  padding: 56px 0 65px;
+  background: #fffcf4;
+}
+
+.hero .body-hero {
+  display: flex;
+}
+
+/* ============hero left================== */
+.hero .media-block {
+  position: relative;
+  /* Lấy kích thước đầu tiên của box chia cho 1170px (kích thước của main-content web) */
+  width: 48%;
+}
+
+.hero .media-block .img {
+  width: 470px;
+  height: 685px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.hero .hero-summary {
+  /* Chỉ nên set chiều rộng, còn chiều dọc khi thêm item vào thì sẽ tự động giãn khung lên trên */
+  width: 270px;
+  position: absolute;
+  bottom: 48px;
+  right: 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.05);
+  /* Chỉ nên đo padding ở trên dưới và trái, còn bên phải nội dung sẽ tự động dãn ra nếu nhiều */
+  padding: 24px;
+}
+
+.hero-summary .item {
+  display: flex;
+  /* Căn giữa các item cho với chữ */
+  align-items: center;
+}
+
+/* Tác động vào class item nằm đằng sau một class item khác -> item 2, 3 nằm sau item 1 có chung class là item */
+.hero-summary .item + .item {
+  margin-top: 22px;
+}
+
+.hero-summary .icon {
+  width: 48px;
+  height: 48px;
+  /* Vì nó là hình tròn bao quanh icon */
+  border-radius: 50%;
+  /* Đổi thuộc tính sang flex để có thể căn giữa */
+  display: flex;
+  /* Vì nó căn giữa hình tròn */
+  justify-content: center;
+  align-items: center;
+  background-color: #fff9e8;
+}
+
+.hero-summary .icon2 {
+  background-color: #fcefff;
+}
+
+.hero-summary .icon3 {
+  background-color: #ebeaff;
+}
+
+.hero-summary .info {
+  margin-left: 16px;
+}
+
+.hero-summary .label {
+  color: #5f5b53;
+  /* Đổi 14px sang 1.4rem */
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% => làm tròn thành 186% và chia cho 100 */
+}
+
+.hero-summary .title {
+  color: #171100;
+  font-size: 1.8rem;
+  /* Mặc định là 400, do ko phải mặc định nên không bỏ đi */
+  font-weight: 600;
+  line-height: 1.67; /* 166.667% -> chia cho 100 tương tự như trên */
+}
+
+/* ================hero right================= */
+.hero .content-block {
+  /* Chiều rộng còn lại, vì media đã chiến 42% như trên */
+  width: 52%;
+  padding-left: 130px;
+  padding-top: 64px;
+}
+
+.hero .heading {
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 5.8rem;
+  font-weight: 700;
+  line-height: 1.17; /* 117.241% */
+  letter-spacing: -1.16px;
+}
+
+.hero .desc {
+  margin-top: 22px;
+  color: #5f5b53;
+  font-size: 1.8rem;
+  line-height: 1.67; /* 166.667% */
+}
+
+.hero .cta-group {
+  display: flex;
+  align-items: center;
+  margin-top: 38px;
+}
+
+/* Set kích thước của nút */
+.hero-cta {
+  min-width: 180px;
+  line-height: 64px;
+  background-color: var(--primary-color);
+}
+
+.hero .watch-video {
+  margin-left: 28px;
+  border: none;
+  /* Trong suốt */
+  background: transparent;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hero .watch-video .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.07);
+}
+
+.hero .watch-video span {
+  margin-left: 14px;
+  color: #171100;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.67; /* 166.667% */
+}
+
+.hero .desc-recent {
+  margin-top: 48px;
+}
+
+.hero .stats {
+  margin-top: 8px;
+}
+
+.hero .stats strong {
+  margin-right: 15px;
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 4.4rem;
+  font-weight: 700;
+  line-height: 1.23;
+}
+
+/* thẻ strong thứ 2 */
+.hero .stats strong:nth-child(2) {
+  margin-left: 28px;
 }
