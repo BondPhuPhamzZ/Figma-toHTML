@@ -65,6 +65,25 @@ a {
   margin-right: auto;
 }
 
+/* Làm dấu 3 chấm nếu nội dung quá dài */
+/* Quá 1 dòng sẽ hiển thị dấu 3 chấm */
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--line-clamp, 1);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Quá 2 dòng sẽ hiện dấu 3 chấm đối với những thẻ có 2 class này */
+.line-clamp.line-2 {
+  --line-clamp: 2;
+}
+
+/* Những nơi nào mà chúng ta nghi ngờ nó sẽ trồi ra gây phá vỡ giao diện */
+.break-all {
+  word-break: break-all;
+}
+
 /* ==================================Header============================= */
 .header {
   background: #fffcf4;
@@ -372,6 +391,7 @@ a {
 }
 
 .popular .course-item {
+  flex: 1;
   border-radius: 12px;
   border: 1px solid #e2dfda;
   background: #fff;
