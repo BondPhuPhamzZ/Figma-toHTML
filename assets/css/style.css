@@ -471,8 +471,15 @@ a {
   background: #2e2100;
 }
 
-.feedback-item {
+.feedback-list {
   display: flex;
+  overflow: hidden;
+}
+
+.feedback-item {
+  width: 100%;
+  display: flex;
+  flex-shrink: 0;
 }
 
 .feedback-item .avatar {
@@ -515,7 +522,7 @@ a {
 /* Viết liền active vào dot để thể hiện phần tử nào có đồng thời cả 2 class thì mới thực hiện */
 .feedback-item .dot.active {
   background-color: var(--primary-color);
-  cursor: default;  /* Đang ở trang nào thì sẽ không hiện bàn tay để ấn vào lại nữa */
+  cursor: default; /* Đang ở trang nào thì sẽ không hiện bàn tay để ấn vào lại nữa */
 }
 
 /* Cả phần bên phải của feedback có chiều rộng là 770, lấy 770/1170 (chia cho chiều rộng phần content chung của trang để dùng % cho nhanh */
